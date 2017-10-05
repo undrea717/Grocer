@@ -1,8 +1,15 @@
 {
   "name": "smartgrocer",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:3001/",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js"
+  },
+  
   "dependencies": {
     "axios": "^0.16.2",
     "cheerio": "^1.0.0-rc.2",
@@ -15,15 +22,14 @@
     "react-scripts": "1.0.14",
     "simple-react-button": "^1.3.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "main": "index.js",
-  "devDependencies": {},
+  
+  
+ 
   "author": "",
   "license": "ISC",
-  "description": ""
+   "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  }
+  
 }
