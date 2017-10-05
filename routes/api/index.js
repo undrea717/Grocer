@@ -32,7 +32,7 @@ const GroceryController = require("../../controllers/grocery-controllers");
 
 	router.get("/recipes/:id", (req, res) => {
 		console.log('why not entering', req.params);
-		request('http://food2fork.com/api/search?key=8a06dc5e795fe19bd343809f1cf30cf7&q='+req.params.id, function(error, response, body){
+		request('http://food2fork.com/api/search?key=6c03ee7c962fbdb30c6b6e3a8002c196&q='+req.params.id, function(error, response, body){
 			console.log('some err', error);
 			console.log('==================================', response);
 			console.log('**********************************', body);
