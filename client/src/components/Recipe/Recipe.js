@@ -48,8 +48,9 @@ class Recipe extends React.Component {
 			<div className="container">
 				<h2>Here Are the Ingredient for {recipeTitle}</h2>
 				{recipeIngredients}
-				<Button bsStyle="success" onClick={this.handleAddIngredient}> 
+				<Button bsStyle="success" className={window.location.pathname === "/plan" ? "active" : ""}> 
 				Add to Grocery List 
+				
 				</Button>
 			</div>
 		)
