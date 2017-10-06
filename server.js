@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 //if(process.env.NODE.ENV === 'production')
-app.use(express.static("client/public"));
+app.use(express.static("client/build"));
 
 
 
