@@ -6,7 +6,8 @@
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\"",
+    "start": "node server.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,10 +18,13 @@
     "mongoose": "^4.12.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-favicon": "^0.0.9",
     "react-google-login": "^2.11.2",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "simple-react-button": "^1.3.0"
+    "simple-react-button": "^1.3.0",
+    "velocity-animate": "^1.5.0",
+    "velocity-react": "^1.3.3"
   },
   "author": "",
   "license": "ISC",

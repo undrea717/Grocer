@@ -1,5 +1,7 @@
 import React from "react";
 import axios from 'axios';
+import Recipes from "../../pages/Recipes";
+import Plan from "../../pages/Plan";
 import RecipeIngredient from './Ingredient';
 import { Button } from 'react-bootstrap';
 import API from "../../utils/API"
@@ -48,10 +50,18 @@ class Recipe extends React.Component {
 			<div className="container">
 				<h2>Here Are the Ingredient for {recipeTitle}</h2>
 				{recipeIngredients}
-				<Button bsStyle="success" className={window.location.pathname === "/plan" ? "active" : ""}> 
-				Add to Grocery List 
-				
-				</Button>
+				<div className="row">
+					<div className="col-md-3">
+						<Button bsStyle="success" href="/plan"> 
+						Add to Grocery List 
+						</Button>
+					</div>
+					<div className="col-md-3">
+						<Button bsStyle="success" href="/recipe">
+						Return to Recipes 
+						</Button>
+					</div>
+				</div>
 			</div>
 		)
 	}

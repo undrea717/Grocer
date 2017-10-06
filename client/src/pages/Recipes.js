@@ -56,20 +56,17 @@ class Discover extends Component {
     </DropdownButton>
 
         </div>
-        <h1 className="text-center">Recipes</h1>
+         <div className="w3-panel w3-light-grey">
+        <span Style="font-size:150px;line-height:0.6em;opacity:0.2">❝</span>
+         <h1 className="text-center">Recipes</h1>
+         <h3 className="text-center">
+        Pick a Recipe and add the ingredents to your grocery list! </h3>
+         <h1 className="text-center">Making Grocery Shopping Easy!!</h1>
+        </div>
 
-
-  <Grid>
-{recipeMap}
-  </Grid>
-     
-
-        <h3 className="text-center">
-          Pick a Recipe and add the ingredents to your grocery list!
-        </h3>
-        <h1 className="text-center">
-        Making Grocery Shopping Easy!!
-        </h1>
+            <Grid>
+          {recipeMap}
+            </Grid>
       </div>
     );
   }

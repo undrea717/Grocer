@@ -14,10 +14,17 @@ render() {
       <h1>SmartGrocer</h1>
       <h2>Meal Planning Done Right</h2>
     </Hero>
-        <h1 className="text-center">Your Grocery List</h1>
-        <Grid>
-        {GroceryList}
-        </Grid>
+        <h1 className="text-center" Style="underline">Your Grocery List</h1>
+          <div className= "text-center">
+            
+              <p className= "text-center">Bananas</p>
+              <p className= "text-center">Butter</p>
+              <p className= "text-center">Flour</p>
+              <p className= "text-center">Baking Powder</p>
+              <p className= "text-center">Sugar</p>
+           
+          </div>
+        
       </Container>
 
     );
