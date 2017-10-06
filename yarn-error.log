@@ -16,40 +16,40 @@ Platform:
 npm manifest: 
   {
     "name": "grocer",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "server.js",
     "scripts": {
       "server": "node server.js",
-      "client": "cd client && npm run start",
-     "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\"",
-     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
-      "deploy": "npm run build && git add . && git commit -m \"Building for production\" && git push heroku master",
-      "build": "cd client && npm run build",
+      "client": "node scripts/start-client.js",
+      "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+      "build": "node scripts/build.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
     },
-    
     "dependencies": {
       "axios": "^0.16.2",
       "cheerio": "^1.0.0-rc.2",
+      "concurrently": "^3.5.0",
       "express": "^4.16.1",
       "mongoose": "^4.12.0",
+      "nodemon": "^1.11.0"
       "react": "^16.0.0",
       "react-dom": "^16.0.0",
+      "react-favicon": "^0.0.9",
       "react-google-login": "^2.11.2",
       "react-router-dom": "^4.2.2",
       "react-scripts": "1.0.14",
-      "simple-react-button": "^1.3.0"
+      "simple-react-button": "^1.3.0",
+      "velocity-animate": "^1.5.0",
+      "velocity-react": "^1.3.3"
     },
-    
-    
-   
     "author": "",
     "license": "ISC",
-     "devDependencies": {
-      "concurrently": "^3.5.0",
+    "devDependencies": {
+     "concurrently": "^3.5.0",
       "nodemon": "^1.11.0"
+  
     }
-    
   }
 
 yarn manifest: 
@@ -1047,7 +1047,7 @@ Lockfile:
       mkdirp "^0.5.1"
       source-map-support "^0.4.15"
   
-  babel-runtime@6.26.0, babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+  babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
     dependencies:
@@ -1428,6 +1428,10 @@ Lockfile:
       align-text "^0.1.3"
       lazy-cache "^1.0.3"
   
+  chain-function@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/chain-function/-/chain-function-1.0.0.tgz#0d4ab37e7e18ead0bdc47b920764118ce58733dc"
+  
   chalk@0.5.1:
     version "0.5.1"
     resolved "https://registry.yarnpkg.com/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
@@ -1502,10 +1506,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/clap/-/clap-1.2.3.tgz#4f36745b32008492557f46412d66d50cb99bce51"
     dependencies:
       chalk "^1.1.3"
-  
-  classnames@^2.2.5:
-    version "2.2.5"
-    resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
   
   clean-css@4.1.x:
     version "4.1.9"
@@ -2115,7 +2115,7 @@ Lockfile:
     dependencies:
       utila "~0.3"
   
-  dom-helpers@^3.2.0, dom-helpers@^3.2.1:
+  dom-helpers@^3.2.0:
     version "3.2.1"
     resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
   
@@ -3503,7 +3503,7 @@ Lockfile:
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
   
-  invariant@^2.1.0, invariant@^2.2.1, invariant@^2.2.2:
+  invariant@^2.2.1, invariant@^2.2.2:
     version "2.2.2"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
     dependencies:
@@ -4151,10 +4151,6 @@ Lockfile:
     version "1.5.0"
     resolved "https://registry.yarnpkg.com/kareem/-/kareem-1.5.0.tgz#e3e4101d9dcfde299769daf4b4db64d895d17448"
   
-  keycode@^2.1.2:
-    version "2.1.9"
-    resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
-  
   kind-of@^3.0.2:
     version "3.2.2"
     resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -4370,6 +4366,10 @@ Lockfile:
   "lodash@>=3.5 <5", lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.1:
     version "4.17.4"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  
+  lodash@^3.10.1:
+    version "3.10.1"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   
   loglevel@^1.4.1:
     version "1.5.0"
@@ -5490,13 +5490,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types-extra@^1.0.1:
-    version "1.0.1"
-    resolved "https://registry.yarnpkg.com/prop-types-extra/-/prop-types-extra-1.0.1.tgz#a57bd4810e82d27a3ff4317ecc1b4ad005f79a82"
-    dependencies:
-      warning "^3.0.0"
-  
-  prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
+  prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0:
     version "15.6.0"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
     dependencies:
@@ -5613,22 +5607,6 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
-  react-bootstrap@^0.31.3:
-    version "0.31.3"
-    resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.31.3.tgz#db2b7d45b00b5dac1ab8b6de3dd97feb3091b849"
-    dependencies:
-      babel-runtime "^6.11.6"
-      classnames "^2.2.5"
-      dom-helpers "^3.2.0"
-      invariant "^2.2.1"
-      keycode "^2.1.2"
-      prop-types "^15.5.10"
-      prop-types-extra "^1.0.1"
-      react-overlays "^0.7.0"
-      react-prop-types "^0.4.0"
-      uncontrollable "^4.1.0"
-      warning "^3.0.0"
-  
   react-dev-utils@^4.1.0:
     version "4.1.0"
     resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.1.0.tgz#f6f436febd3f4eeb538490319b51c875c1e35bc5"
@@ -5674,28 +5652,16 @@ Lockfile:
       settle-promise "1.0.0"
       source-map "0.5.6"
   
+  react-favicon@^0.0.9:
+    version "0.0.9"
+    resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.9.tgz#1765a902f68277d0b7ed6ddc8588d5164b53f43a"
+  
   react-google-login@^2.11.2:
     version "2.11.3"
     resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-2.11.3.tgz#42346abd400500ce38cef7e3f5bc2aca9fccf563"
     dependencies:
       "@types/react" "*"
       prop-types "^15.6.0"
-  
-  react-overlays@^0.7.0:
-    version "0.7.1"
-    resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.7.1.tgz#0b84708d8007082163c47155a2f60a0858c7a3c7"
-    dependencies:
-      classnames "^2.2.5"
-      dom-helpers "^3.2.1"
-      prop-types "^15.5.10"
-      prop-types-extra "^1.0.1"
-      warning "^3.0.0"
-  
-  react-prop-types@^0.4.0:
-    version "0.4.0"
-    resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
-    dependencies:
-      warning "^3.0.0"
   
   react-router-dom@^4.2.2:
     version "4.2.2"
@@ -5761,6 +5727,16 @@ Lockfile:
       whatwg-fetch "2.0.3"
     optionalDependencies:
       fsevents "1.1.2"
+  
+  react-transition-group@^1.1.2:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
+    dependencies:
+      chain-function "^1.0.0"
+      dom-helpers "^3.2.0"
+      loose-envify "^1.3.1"
+      prop-types "^15.5.6"
+      warning "^3.0.0"
   
   "react@^15 || ^16", react@^16.0.0:
     version "16.0.0"
@@ -6009,7 +5985,7 @@ Lockfile:
       tunnel-agent "^0.6.0"
       uuid "^3.0.0"
   
-  request@^2.79.0, request@^2.83.0:
+  request@^2.79.0:
     version "2.83.0"
     resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
     dependencies:
@@ -6835,12 +6811,6 @@ Lockfile:
     version "0.0.6"
     resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
   
-  uncontrollable@^4.1.0:
-    version "4.1.0"
-    resolved "https://registry.yarnpkg.com/uncontrollable/-/uncontrollable-4.1.0.tgz#e0358291252e1865222d90939b19f2f49f81c1a9"
-    dependencies:
-      invariant "^2.1.0"
-  
   undefsafe@0.0.3:
     version "0.0.3"
     resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-0.0.3.tgz#ecca3a03e56b9af17385baac812ac83b994a962f"
@@ -6993,6 +6963,19 @@ Lockfile:
   vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  
+  velocity-animate@^1.4.0, velocity-animate@^1.5.0:
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.5.0.tgz#fc8771d8dfe1136ff02a707e10fbb0957c4b030f"
+  
+  velocity-react@^1.3.3:
+    version "1.3.3"
+    resolved "https://registry.yarnpkg.com/velocity-react/-/velocity-react-1.3.3.tgz#d6d47276cfc8be2a75623879b20140ac58c1b82b"
+    dependencies:
+      lodash "^3.10.1"
+      prop-types "^15.5.8"
+      react-transition-group "^1.1.2"
+      velocity-animate "^1.4.0"
   
   vendors@^1.0.0:
     version "1.0.1"
@@ -7356,7 +7339,7 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/andreabullock/Grocer/package.json: Unexpected string in JSON at position 375
+  SyntaxError: /Users/andreabullock/Grocer/package.json: Unexpected string in JSON at position 538
       at JSON.parse (<anonymous>)
       at /usr/local/lib/node_modules/yarn/lib/cli.js:797:57
       at Generator.next (<anonymous>)
